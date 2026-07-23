@@ -8,7 +8,7 @@ const translations = {
     status_hours:"السبت–الخميس 10ص–10م",
     brand:"كمبيوترجي ماهر",
     brand_sub:"حلول تقنية · جدة",
-    nav_services:"الخدمات", nav_how:"آلية العمل", nav_products:"المنتجات", nav_reviews:"آراء العملاء", nav_contact:"تواصل معنا",
+    nav_services:"الخدمات", nav_how:"آلية العمل", nav_products:"المنتجات", nav_projects:"المشاريع", nav_reviews:"آراء العملاء", nav_contact:"تواصل معنا",
     nav_book:"احجز الآن",
     hero_eyebrow:"// حلول تقنية موثوقة منذ 2016",
     hero_h1_line1:"نُصلح أجهزتك،", hero_h1_line2:"ونُجهّز", hero_h1_line3:"مستقبلك.",
@@ -37,6 +37,12 @@ const translations = {
     p5_title:"ماوس لاسلكي", p5_desc:"اتصال ثنائي، بطارية تدوم شهرين، تصميم صامت.",
     p6_title:"لوحة مفاتيح ميكانيكية", p6_desc:"إضاءة RGB، مفاتيح باللمس الأزرق، لوحة تقنية.",
     stat1:"طلب صيانة مُنجز", stat2:"تقييم متوسط من العملاء", stat3:"متوسط وقت الوصول", stat4:"سنوات خبرة ميدانية",
+    projects_tag:"// المشاريع", projects_h2:"مشاريع رقمية تم تنفيذها",
+    projects_p:"نماذج حقيقية لمشاريع ومواقع رقمية وأنظمة تفاعلية تم تطويرها وتدشينها على الويب.",
+    proj_preview_btn:"معاينة سريعة", proj_visit_btn:"زيارة الموقع ↗", proj_details_btn:"التفاصيل والمعاينة", proj_close_modal:"إغلاق",
+    modal_client:"العميل:", modal_year:"سنة التنفيذ:", modal_stack:"تقنيات العمل:",
+    p1_cat:"مكتبة رقمية", p1_proj_title:"مشروع إيلوريا — حكايات تُكتب لتبقى", p1_proj_desc:"منصة رقمية ومكتبة تفاعلية لعرض القصص والروايات والاقتباسات الأدبية بتصميم بصري وظيفي ودعم لوضع الكاتبة.",
+    p2_cat:"بوابة إلكترونية", p2_proj_title:"بوابة مؤسسة الماهرين", p2_proj_desc:"بوابة تفاعلية بصرياً تجمع المشاريع العائلية والمنصات التقنية الصغيرة في واجهة دخول مبتكرة ومؤثرات خاصة.",
     reviews_tag:"// آراء العملاء", reviews_h2:"موثوق من عملاء حقيقيين",
     t1_p:"حلّوا مشكلة الطابعة خلال نصف ساعة، وفنيّ محترف جداً وواضح في الشرح.", t1_name:"سارة العتيبي", t1_role:"صاحبة عمل صغير",
     t2_p:"أصلحوا الواي فاي في المكتب وصار الاتصال ثابت في كل الأقسام، خدمة سريعة.", t2_name:"فهد القحطاني", t2_role:"مدير مكتب",
@@ -59,7 +65,7 @@ const translations = {
     status_hours:"Sat–Thu 10AM–10PM",
     brand:"Maher Tech",
     brand_sub:"IT SOLUTIONS · JEDDAH",
-    nav_services:"Services", nav_how:"How it works", nav_products:"Products", nav_reviews:"Reviews", nav_contact:"Contact",
+    nav_services:"Services", nav_how:"How it works", nav_products:"Products", nav_projects:"Projects", nav_reviews:"Reviews", nav_contact:"Contact",
     nav_book:"Book now",
     hero_eyebrow:"// Trusted IT solutions since 2016",
     hero_h1_line1:"We fix your gear,", hero_h1_line2:"and gear", hero_h1_line3:"you up for what's next.",
@@ -88,6 +94,12 @@ const translations = {
     p5_title:"Wireless Mouse", p5_desc:"Dual connectivity, two-month battery life, silent clicks.",
     p6_title:"Mechanical Keyboard", p6_desc:"RGB backlight, blue tactile switches, tech-forward build.",
     stat1:"Repairs completed", stat2:"Average customer rating", stat3:"Average arrival time", stat4:"Years of field experience",
+    projects_tag:"// Projects", projects_h2:"Live Web Projects & Platforms",
+    projects_p:"Real digital platforms, interactive libraries, and custom portals built and deployed on the web.",
+    proj_preview_btn:"Quick Preview", proj_visit_btn:"Visit Site ↗", proj_details_btn:"Details & Preview", proj_close_modal:"Close",
+    modal_client:"Client:", modal_year:"Year:", modal_stack:"Tech Stack:",
+    p1_cat:"Digital Library", p1_proj_title:"Eloria Project — Stories Made to Last", p1_proj_desc:"An interactive digital library and web platform for stories, web novels, and curated literary quotes.",
+    p2_cat:"Web Portal", p2_proj_title:"Al-Maheren Foundation Portal", p2_proj_desc:"Interactive digital portal showcasing family projects and custom tech platforms with immersive visual effects.",
     reviews_tag:"// Reviews", reviews_h2:"Trusted by real customers",
     t1_p:"Fixed our printer issue in half an hour — professional and explained everything clearly.", t1_name:"Sarah Al-Otaibi", t1_role:"Small business owner",
     t2_p:"Fixed the office wifi and now the connection is stable across every room. Fast service.", t2_name:"Fahad Al-Qahtani", t2_role:"Office manager",
@@ -205,3 +217,107 @@ window.addEventListener("scroll", ()=>{
   if(window.scrollY > 40){ nav.style.boxShadow = "0 6px 24px rgba(0,0,0,.35)"; }
   else{ nav.style.boxShadow = "none"; }
 });
+
+/* ---------------- Projects Filtering & Modal ---------------- */
+const projectsData = {
+  proj1: {
+    url: "https://abdullah2036.github.io/eloriaproject",
+    img: "assets/projects/eloria.png",
+    id: "PRJ / 01",
+    ar: {
+      title: "مشروع إيلوريا — حكايات تُكتب لتبقى",
+      cat: "مكتبة رقمية",
+      desc: "منصة رقمية ومكتبة تفاعلية لعرض القصص والروايات والاقتباسات الأدبية بتصميم بصري وظيفي ودعم لوضع الكاتبة والتصفح السلس.",
+      client: "مشروع إيلوريا الأدبي",
+      year: "2024"
+    },
+    en: {
+      title: "Eloria Project — Stories Made to Last",
+      cat: "Digital Library",
+      desc: "An interactive digital library and web platform for stories, web novels, and curated literary quotes with custom author mode.",
+      client: "Eloria Project",
+      year: "2024"
+    },
+    stack: ["HTML5", "CSS3", "JavaScript", "SPA Engine"]
+  },
+  proj2: {
+    url: "https://abdullah2036.github.io/maheren",
+    img: "assets/projects/maheren.png",
+    id: "PRJ / 02",
+    ar: {
+      title: "بوابة مؤسسة الماهرين",
+      cat: "بوابة إلكترونية",
+      desc: "بوابة تفاعلية بصرياً تجمع المشاريع العائلية والمنصات التقنية الصغيرة في واجهة دخول مبتكرة ومؤثرات خاصة.",
+      client: "مؤسسة الماهرين",
+      year: "2024"
+    },
+    en: {
+      title: "Al-Maheren Foundation Portal",
+      cat: "Web Portal",
+      desc: "Interactive digital portal showcasing family projects and custom tech platforms with immersive visual effects and gatehouse entry.",
+      client: "Al-Maheren Foundation",
+      year: "2024"
+    },
+    stack: ["HTML5", "Cyber CSS", "JS FX", "Interactive UI"]
+  }
+};
+
+function filterProjects(category){
+  const filterBtns = document.querySelectorAll(".project-filters .filter-btn");
+  filterBtns.forEach(btn=>{
+    btn.classList.toggle("active", btn.getAttribute("data-filter") === category);
+  });
+
+  const cards = document.querySelectorAll(".projects-grid .project-card");
+  cards.forEach(card=>{
+    const cardCat = card.getAttribute("data-category");
+    if(category === "all" || cardCat === category){
+      card.style.display = "block";
+      setTimeout(()=>{ card.style.opacity = "1"; card.style.transform = "translateY(0)"; }, 50);
+    } else {
+      card.style.opacity = "0";
+      card.style.transform = "translateY(15px)";
+      setTimeout(()=>{ card.style.display = "none"; }, 300);
+    }
+  });
+}
+
+function openProjectModal(projKey){
+  const data = projectsData[projKey];
+  if(!data) return;
+
+  const langData = data[currentLang] || data.ar;
+  document.getElementById("modalUrl").textContent = data.url;
+  document.getElementById("modalImg").src = data.img;
+  document.getElementById("modalImg").alt = langData.title;
+  document.getElementById("modalCat").textContent = langData.cat;
+  document.getElementById("modalId").textContent = data.id;
+  document.getElementById("modalTitle").textContent = langData.title;
+  document.getElementById("modalDesc").textContent = langData.desc;
+  document.getElementById("modalClient").textContent = langData.client;
+  document.getElementById("modalYear").textContent = langData.year;
+  
+  const visitBtn = document.getElementById("modalVisitBtn");
+  visitBtn.href = data.url;
+
+  const stackContainer = document.getElementById("modalStack");
+  stackContainer.innerHTML = data.stack.map(tech => `<span>${tech}</span>`).join('');
+
+  const modal = document.getElementById("projectModal");
+  modal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeProjectModal(e){
+  if(e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close')) return;
+  const modal = document.getElementById("projectModal");
+  modal.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+document.addEventListener("keydown", (e)=>{
+  if(e.key === "Escape"){
+    closeProjectModal();
+  }
+});
+
